@@ -9,8 +9,7 @@ def hex_to_rgb(hex_color: str):
 
 def recolor_house(image: Image.Image, hex_color: str) -> Image.Image:
     """
-    Recolors the non-transparent parts of the house-only image.
-    Works together with rembg mask.
+    Recolors the non-transparent parts of the house-only image, preserving windows/doors.
     """
     img = image.convert("RGBA")
     data = np.array(img)
@@ -20,9 +19,11 @@ def recolor_house(image: Image.Image, hex_color: str) -> Image.Image:
 
     # Apply color only where alpha > 0 (house pixels)
     mask = data[:, :, 3] > 0
-    data[mask, 0] = r
-    data[mask, 1] = g
-    data[mask, 2] = b
+    # Exclude sky-like areas (e.g., blue windows) based on color range
+    exclude_mask = (data[:, :, 0] > 200) & (data[:, :, 1] > 200) & (data[:, :, 2] < 100)
+    final_mask = mask & ~exclude_mask
+    data[final_mask, 0] = r
+    data[final_mask, 1] = g
+    data[final_mask, 2] = b
 
     return Image.fromarray(data, "RGBA")
-
