@@ -5,3 +5,5 @@ Pillow
 rembg
 torch
 torchvision
+onnxruntime
+
