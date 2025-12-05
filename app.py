@@ -79,7 +79,8 @@ st.markdown(
     """
     ---
     👨‍💻 Developed by **Suraj Kumar Pandey**  
-    🎓 Under mentorship of **Dr. Tauseef Ahmad (HOD IT)**  
+    🎓 Under mentorship of **Dr. Ashok Kumar Yadav**  
     """,
     unsafe_allow_html=True
+
 )
