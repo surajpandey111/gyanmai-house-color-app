@@ -79,8 +79,9 @@ st.markdown(
     """
     ---
     👨‍💻 Developed by **Suraj Kumar Pandey**  
-    🎓 Under mentorship of **Dr. Ashok Kumar Yadav**  
+    🎓 Under mentorship of **Dr. Tauseef Ahmad**  
     """,
     unsafe_allow_html=True
 
 )
+
